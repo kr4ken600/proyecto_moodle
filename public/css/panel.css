@@ -1,0 +1,8 @@
+.nav-link-cs{
+  color: var(--text-principal) !important;
+  transition: 0.5s;
+}
+
+.nav-link-cs:hover{
+  color: #58287F !important;
+}

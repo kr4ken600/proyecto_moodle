@@ -44,8 +44,12 @@ hr {
   box-shadow: 0px 30px 40px -20px var(--secondary-color);
 }
 
-.bd-principal{
+.bdt-principal{
   border-top: 3px solid #58287F !important;
+}
+
+.bdb-principal{
+  border-bottom: 3px solid #58287F !important;
 }
 
 .background{

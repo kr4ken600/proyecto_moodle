@@ -8,9 +8,9 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-8 col-lg-6 py-3 px-5 border border-secondary rounded bd-principal g-2 text-center">
+        <div class="col-sm-12 col-md-8 col-lg-6 py-3 px-5 border border-secondary rounded bdt-principal g-2 text-center">
           <h3>Acceder al Panel</h3>
-          <form action="{{route('alumnos.login')}}" method="post" class="my-5">
+          <form action="" method="post" class="my-5">
             @csrf
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
@@ -23,7 +23,7 @@
               </div>
               <div class="col-12">
                 <input type="submit" class="form-control btn btn-primary" value="Entrar">
-            </div>
+              </div>
             </div>
           </form>
         </div>
