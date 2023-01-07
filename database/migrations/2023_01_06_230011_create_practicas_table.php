@@ -14,8 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('practicas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_curso')->unsigned();
+            $table->string('nombre');
+            $table->text('instrucciones');
             $table->timestamps();
+            
+            $table->foreign('id_curso')
+                  ->references('id')
+                  ->on('cursos')
+                  ->onDelete('CASCADE');
         });
     }
 

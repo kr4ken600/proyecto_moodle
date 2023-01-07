@@ -14,8 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cursos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_docente')->unsigned();
+            $table->string('nombre');
+            $table->integer('duracion');
             $table->timestamps();
+            
+            $table->foreign('id_docente')
+                  ->references('id')
+                  ->on('docentes')
+                  ->onDelete('CASCADE');
         });
     }
 

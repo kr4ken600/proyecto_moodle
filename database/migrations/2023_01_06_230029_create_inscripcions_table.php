@@ -14,8 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('inscripcions', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('id_curso')->unsigned();
+            $table->integer('id_alumno')->unsigned();
             $table->timestamps();
+
+            $table->foreign('id_curso')
+                  ->references('id')
+                  ->on('cursos')
+                  ->onDelete('CASCADE');
+
+            $table->foreign('id_alumno')
+                  ->references('id')
+                  ->on('alumnos')
+                  ->onDelete('CASCADE');
         });
     }
 
