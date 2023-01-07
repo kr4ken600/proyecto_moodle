@@ -1,3 +1,9 @@
+const addDocente = document.getElementById('addDocente');
+addDocente.onclick = () => {
+  const formDocente = document.getElementById('formDocente');
+  formDocente.classList.toggle('ghost');
+};
+
 const btnTable = document.querySelectorAll('.btn-table');
 btnTable.forEach((item) => {
   if(item.innerText !== '0'){

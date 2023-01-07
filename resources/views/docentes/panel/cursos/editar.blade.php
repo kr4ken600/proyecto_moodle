@@ -76,7 +76,9 @@
           @foreach ($practicas as $practica)
           <tr>
             <td>{{$practica->nombre}}</td>
-            <td>{{count(explode('.', $practica->instrucciones))-1}}</td>
+            <td>
+              <a href="#" class="text-decoration-none btn-table" data-btn="{{$practica->id}}">{{count(explode('.', $practica->instrucciones))-1}}</a>
+            </td>
             <td>
               <form action="{{route('docentes.panel.practica.eliminar', [$practica->id])}}" method="post">
                 @method('DELETE')
@@ -85,14 +87,19 @@
               </form>
             </td>
           </tr>
+          <tr class="ghost-table" id="tr{{$practica->id}}">
+            <td colspan="3">
+              {{$practica->instrucciones}}
+            </td>
+          </tr>
           @endforeach
         </tbody>
       </table>
     @endif
   </div>
-
 </div>
+@endsection
 
-
-
+@section('js')
+  <script src="{{asset('js/cursos.js')}}"></script>
 @endsection

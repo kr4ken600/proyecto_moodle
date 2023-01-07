@@ -6,3 +6,16 @@
 .nav-link-cs:hover{
   color: #58287F !important;
 }
+
+.ghost{
+  visibility: collapse;
+  height: 0;
+}
+
+.ghost-table{
+  display: none;
+}
+
+.btn-table{
+  color: var(--text-principal);
+}
