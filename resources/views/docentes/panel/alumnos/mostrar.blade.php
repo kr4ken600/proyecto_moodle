@@ -56,7 +56,7 @@
                 <a href="#" class="text-decoration-none btn-table" data-btn="{{$alumno->id}}">0</a>
               </td>
               <td>
-                <form action="{{route('docentes.panel.docentes.eliminar', [$alumno->id])}}" method="post">
+                <form action="{{route('docentes.panel.alumnos.eliminar', [$alumno->id])}}" method="post">
                   @method('DELETE')
                   @csrf
                   <button type="submit" class="btn btn-danger">Eliminar</button>

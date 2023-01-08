@@ -25,14 +25,22 @@ class AlumnoController extends Controller
         'passwd' => 'required'
         ]);
 
-        $docente = new Alumno;
-        $docente->correo = $req->correo;
-        $docente->nombre = $req->nombre;
-        $docente->apellido = $req->apellido;
-        $docente->passwd = Hash::make($req->passwd);
+        $alumno = new Alumno;
+        $alumno->correo = $req->correo;
+        $alumno->nombre = $req->nombre;
+        $alumno->apellido = $req->apellido;
+        $alumno->passwd = Hash::make($req->passwd);
 
-        $docente->save();
+        $alumno->save();
 
         return redirect()->route('docentes.panel.alumnos')->with('message', 'Alumno agregado correctamente.');
+    }
+
+    public function destroy($id)
+    {
+        $alumno = Alumno::find($id);
+        $alumno->delete();
+
+        return redirect()->route('docentes.panel.alumnos')->with('message', 'Alumno eliminado correctamente.');
     }
 }

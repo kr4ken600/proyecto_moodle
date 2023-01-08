@@ -9,7 +9,7 @@
       <button class="text-decoration-none btn btn-success" id="addDocente">Agregar Docente</button>
     </div>
   </div>
-  <div id="formAlumno" class="ghost col-sm-12 col-md-10 .col-lg-10 py-3 px-5 border border-secondary rounded bdt-principal g-2 text-center mb-5">
+  <div id="formDocente" class="ghost col-sm-12 col-md-10 .col-lg-10 py-3 px-5 border border-secondary rounded bdt-principal g-2 text-center mb-5">
     <form action="{{route('docentes.panel.docentes.crear')}}" method="post">
       @csrf
       <div class="row">

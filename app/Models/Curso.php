@@ -13,4 +13,9 @@ class Curso extends Model
     {
         return $this->belongsTo(Docente::class, 'id_docente');
     }
+
+    public function practica()
+    {
+        return $this->hasMany(Practica::class, 'id_curso');
+    }
 }

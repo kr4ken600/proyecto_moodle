@@ -5,6 +5,7 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\PracticaController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\PanelAlumnoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,9 +55,9 @@ Route::delete('/docentes/panel/docentes/docente/{id}', [DocenteController::class
 //> Controller Alumnos
 Route::get('/docentes/panel/alumnos', [AlumnoController::class, 'index'])->name('docentes.panel.alumnos');
 Route::post('/docentes/panel/alumnos/crear', [AlumnoController::class, 'store'])->name('docentes.panel.alumnos.crear');
+Route::delete('/docentes/panel/alumnos/alumno/{id}', [AlumnoController::class, 'destroy'])->name('docentes.panel.alumnos.eliminar');
 
 //! Panel Alumnos
 //> Index
-Route::get('/alumnos/panel', function(){
-    return view('alumnos.principal.index');
-})->name('alumnos.panel');
+Route::get('/alumnos/panel', [PanelAlumnoController::class, 'index'])->name('alumnos.panel');
+Route::post('/alumnos/panel/suscribe', [PanelAlumnoController::class, 'suscripcion'])->name('alumnos.panel.suscribirse');

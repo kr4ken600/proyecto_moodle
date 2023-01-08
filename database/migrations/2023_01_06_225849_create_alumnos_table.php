@@ -19,7 +19,12 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('passwd');
+            $table->integer('id_role')->unsigned();
             $table->timestamps();
+            
+            $table->foreign('id_role')
+                  ->references('id')
+                  ->on('roles');
         });
     }
 
