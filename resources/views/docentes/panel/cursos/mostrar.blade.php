@@ -4,6 +4,20 @@
 
 <h1 class="text-center border-buttom bdb-principal pb-3 mb-5">Mis cursos</h1>
 <div class="row align-items-center">
+  @if (session('message'))
+    <div class="col-12">
+      <div class="alert alert-primary" role="alert">
+        {{session('message')}}
+      </div>
+    </div>
+  @endif
+  @if (session('messageD'))
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert">
+        {{session('messageD')}}
+      </div>
+    </div>
+  @endif
   <div class="col-sm-12 col-md-4 .col-lg-4 mb-3">
     <div class="card text-center" style="width: auto;">
       <div class="card-body">

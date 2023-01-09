@@ -39,7 +39,7 @@ class CursoController extends Controller
 
         $curso->save();
 
-        return redirect()->route('docentes.panel')->with('message', 'Curso creado correctamente.');
+        return redirect()->route('docentes.panel')->with('message', "Curso '{$req->nombre}' creado correctamente.");
     }
 
     public function show($id)
@@ -59,7 +59,7 @@ class CursoController extends Controller
         $curso->duracion = $req->duracion;
 
         $curso->save();
-        return redirect()->route('docentes.panel.cursos.editar', [$id])->with('message', 'Curso actualizado correctamente');
+        return redirect()->route('docentes.panel.cursos.editar', [$id])->with('message', "Curso '{$req->nombre}' actualizado correctamente");
     }
 
     public function destroy($id)
@@ -67,6 +67,6 @@ class CursoController extends Controller
         $curso = Curso::find($id);
         $curso->delete();
 
-        return redirect()->route('docentes.panel')->with('message', 'Curso eliminado correctamente.');
+        return redirect()->route('docentes.panel')->with('messageD', "Curso '{$curso->nombre}' eliminado correctamente.");
     }
 }

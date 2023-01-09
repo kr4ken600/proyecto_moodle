@@ -16,16 +16,6 @@
                     <a class="btn btn-custom fs-4" href="{{route('docentes')}}">Docentes</a></div>
                 </div>
             </div>
-            <div class="col-12 mb-3">
-                <div class="d-grid gap-1">
-                    <a class="btn btn-success" href="{{route('docentes.panel')}}">Panel Docente</a>
-                </div>
-            </div>
-            <div class="col-12 mb-3">
-                <div class="d-grid gap-1">
-                    <a class="btn btn-success" href="{{route('alumnos.panel')}}">Panel Alumno</a>
-                </div>
-            </div>
         </div>
     </div>
 </div>

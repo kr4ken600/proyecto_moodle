@@ -2,10 +2,37 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Alumno extends Model
+class Alumno extends Authenticatable
 {
-    use HasFactory;
+    use Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'email',
+        'nombre',
+        'apellido',
+        'password',
+        'id_role',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+    ];
+
+    public function insc()
+    {
+        return $this->hasMany(Inscripcion::class, 'id_alumno');
+    }
 }

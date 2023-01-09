@@ -27,10 +27,11 @@ class DocenteController extends Controller
     ]);
 
     $docente = new Docente;
-    $docente->correo = $req->correo;
+    $docente->email = $req->correo;
     $docente->nombre = $req->nombre;
     $docente->apellido = $req->apellido;
-    $docente->passwd = Hash::make($req->passwd);
+    $docente->password = Hash::make($req->passwd);
+    $docente->id_role = 2;
 
     $docente->save();
 
@@ -42,6 +43,6 @@ class DocenteController extends Controller
         $docente = Docente::find($id);
         $docente->delete();
 
-        return redirect()->route('docentes.panel.docentes')->with('message', 'Docente eliminado correctamente.');
+        return redirect()->route('docentes.panel.docentes')->with('messageD', 'Docente eliminado correctamente.');
     }
 }

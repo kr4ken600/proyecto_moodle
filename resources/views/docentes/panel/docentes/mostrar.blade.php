@@ -36,6 +36,20 @@
     </form>
   </div>
   <h1 class="text-center border-buttom bdb-principal pb-3 mb-5">Lista Docentes</h1>
+  @if (session('message'))
+    <div class="col-12">
+      <div class="alert alert-primary" role="alert">
+        {{session('message')}}
+      </div>
+    </div>
+  @endif
+  @if (session('messageD'))
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert">
+        {{session('messageD')}}
+      </div>
+    </div>
+  @endif
   <div class="col-sm-12 col-md-12 col-lg-12 py-3 px-5 border border-secondary rounded bdt-principal g-2 text-center mb-5">
     <table class="table">
       <thead>
@@ -51,7 +65,7 @@
           @foreach ($docentes as $docente)
           <tr>
             <td>{{ucfirst($docente->nombre)}} {{ucfirst($docente->apellido)}}</td>
-            <td>{{$docente->correo}}</td>
+            <td>{{$docente->email}}</td>
             <td>
               <a href="#" class="text-decoration-none btn-table" data-btn="{{$docente->id}}">{{count($docente->curso)}}</a>
             </td>

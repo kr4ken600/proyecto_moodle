@@ -10,18 +10,37 @@
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-6 py-3 px-5 border border-secondary rounded bdt-principal g-2 text-center">
       <h3>Acceder a Cursos Ps</h3>
-      <form action="" method="post" class="my-5">
+      @error('credential')
+        <h6 class="message-error mt-4">
+            {{$message}}
+        </h6>
+      @enderror
+      <form action="{{route('alumno.login')}}" method="post" class="my-5">
         @csrf
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
-            <label for="correo" class="form-label">Correo Electronico</label>
-            <input type="email" class="form-control" name="correo" id="correo" value="{{old('correo')}}" autofocus>
+            <label for="email" class="form-label">Correo Electronico</label>
+            <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" autofocus>
           </div>
-          <div class="col-sm-12 col-md-12 col-lg-12 mb-5">
-            <label for="passwd" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" name="passwd" id="passwd" >
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            @error('email')
+            <h6 class="message-error mt-2 mb-3">
+                {{$message}}
+            </h6>
+            @enderror
           </div>
-          <div class="col-12">
+          <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" name="password" id="password" >
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            @error('password')
+            <h6 class="message-error my-2">
+                {{$message}}
+            </h6>
+            @enderror
+          </div>
+          <div class="col-12 mt-3">
             <input type="submit" class="form-control btn btn-primary" value="Entrar">
         </div>
         </div>

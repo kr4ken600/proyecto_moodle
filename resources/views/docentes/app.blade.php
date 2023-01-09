@@ -26,7 +26,10 @@
               <span class="nav-link text-light">Usuario</span>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="{{route('docentes')}}">Cerrar Sesión</a>
+              <form action="{{route('docentes.logout')}}" method="post">
+                @csrf
+                <button class="nav-link text-light" type="submit">Cerrar Sesión</button>
+              </form>
           </li>
           </ul>
         </div>

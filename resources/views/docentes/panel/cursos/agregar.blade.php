@@ -20,10 +20,31 @@
             @endforeach
           </select>
         </div>
+        @error('nombre')
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <h6 class="message-error mt-2 mb-3">
+              {{$message}}
+          </h6>
+        </div>
+        @enderror
+        @error('imparte')
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <h6 class="message-error mt-2 mb-3">
+              {{$message}}
+          </h6>
+        </div>
+        @enderror
         <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
           <label for="duracion" class="form-label">Duracion del Curso (semanas)</label>
           <input type="number" class="form-control" name="duracion" id="duracion" min="1" max="4" value="1">
         </div>
+        @error('duracion')
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <h6 class="message-error mt-2 mb-3">
+              {{$message}}
+          </h6>
+        </div>
+        @enderror
         <div class="col-12">
           <button type="submit" class="form-control btn btn-primary">Crear</button>
           {{-- <input type="submit" class="form-control btn btn-primary" name="crear" value="Crear"> --}}

@@ -26,10 +26,11 @@ class AlumnoController extends Controller
         ]);
 
         $alumno = new Alumno;
-        $alumno->correo = $req->correo;
+        $alumno->email = $req->correo;
         $alumno->nombre = $req->nombre;
         $alumno->apellido = $req->apellido;
-        $alumno->passwd = Hash::make($req->passwd);
+        $alumno->password = Hash::make($req->passwd);
+        $alumno->id_role = 3;
 
         $alumno->save();
 
@@ -41,6 +42,6 @@ class AlumnoController extends Controller
         $alumno = Alumno::find($id);
         $alumno->delete();
 
-        return redirect()->route('docentes.panel.alumnos')->with('message', 'Alumno eliminado correctamente.');
+        return redirect()->route('docentes.panel.alumnos')->with('messageD', 'Alumno eliminado correctamente.');
     }
 }

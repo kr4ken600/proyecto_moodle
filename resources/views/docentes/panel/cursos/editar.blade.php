@@ -6,6 +6,13 @@
 
 <h1 class="text-center border-buttom bdb-principal pb-3 mb-5">Editar Curso</h1>
 <div class="row justify-content-center mb-5">
+  @if (session('message'))
+    <div class="col-12">
+      <div class="alert alert-primary" role="alert">
+        {{session('message')}}
+      </div>
+    </div>
+  @endif
   <div class="col-sm-12 col-md-10 col-lg-10 py-3 px-5 border border-secondary rounded bdt-principal g-2 text-center mb-5">
     <form action="{{route('docentes.panel.cursos.editarc', ['id' => $curso->id])}}" method="post">
       @method('PATCH')
@@ -37,6 +44,13 @@
   <!-- AGREGAR PRACTICAS -->
 
   <h1 class="text-center border-buttom bdb-principal pb-3 mb-5">Agregar Practicas</h1>
+  @if (session('messageP'))
+    <div class="col-12">
+      <div class="alert alert-primary" role="alert">
+        {{session('messageP')}}
+      </div>
+    </div>
+  @endif
   <div class="col-sm-12 col-md-10 col-lg-10 py-3 px-5 border border-secondary rounded bdt-principal g-2 text-center mb-5">
     <h3 class="mb-3">Agregar Practica</h3>
     <form action="{{route('docentes.panel.practica.crear')}}" method="post">
@@ -61,6 +75,13 @@
   <!-- LISTADO DE PRACTICAS -->
 
   <h1 class="text-center border-buttom bdb-principal pb-3 mb-5">Lista de Practicas</h1>
+  @if (session('messageDP'))
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert">
+        {{session('messageDP')}}
+      </div>
+    </div>
+  @endif
   <div class="col-sm-12 col-md-12 col-lg-12 py-3 px-5 border border-secondary rounded bdt-principal g-2 text-center mb-5">
     @if (!empty($practicas))
       <table class="table">

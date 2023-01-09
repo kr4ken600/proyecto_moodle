@@ -57,3 +57,7 @@ hr {
   background-size: 32px 32px;
   background-color: #ffffff;
 }
+
+.message-error{
+  color: red !important;
+}

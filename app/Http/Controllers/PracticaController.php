@@ -22,7 +22,7 @@ class PracticaController extends Controller
 
         $practica->save();
 
-        return redirect()->route('docentes.panel.cursos.editar', [$req->curso])->with('message', 'Practica agregada correctamente');
+        return redirect()->route('docentes.panel.cursos.editar', [$req->curso])->with('messageP', 'Practica agregada correctamente');
     }
 
     public function destroy($id)
@@ -31,6 +31,6 @@ class PracticaController extends Controller
         $id_curso = $practica->id_curso;
         $practica->delete();
 
-        return redirect()->route('docentes.panel.cursos.editar', [$id_curso])->with('message', 'Practica eliminada correctamente.');
+        return redirect()->route('docentes.panel.cursos.editar', [$id_curso])->with('messageDP', 'Practica eliminada correctamente.');
     }
 }

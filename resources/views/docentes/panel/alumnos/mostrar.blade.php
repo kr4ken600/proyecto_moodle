@@ -36,6 +36,20 @@
     </form>
   </div>
   <h1 class="text-center border-buttom bdb-principal pb-3 mb-5">Lista Alumnos</h1>
+  @if (session('message'))
+    <div class="col-12">
+      <div class="alert alert-primary" role="alert">
+        {{session('message')}}
+      </div>
+    </div>
+  @endif
+  @if (session('messageD'))
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert">
+        {{session('messageD')}}
+      </div>
+    </div>
+  @endif
   <div class="col-sm-12 col-md-12 col-lg-12 py-3 px-5 border border-secondary rounded bdt-principal g-2 text-center mb-5">
     <table class="table">
       <thead>
@@ -51,9 +65,11 @@
             @foreach ($alumnos as $alumno)
             <tr>
               <td>{{ucfirst($alumno->nombre)}} {{ucfirst($alumno->apellido)}}</td>
-              <td>{{$alumno->correo}}</td>
+              <td>{{$alumno->email}}</td>
               <td>
-                <a href="#" class="text-decoration-none btn-table" data-btn="{{$alumno->id}}">0</a>
+                <a href="#" class="text-decoration-none btn-table" data-btn="{{$alumno->id}}">
+                  {{count($alumno->insc)}}
+                </a>
               </td>
               <td>
                 <form action="{{route('docentes.panel.alumnos.eliminar', [$alumno->id])}}" method="post">
@@ -64,11 +80,10 @@
               </td>
             </tr>
             <tr class="ghost-table" id="tr{{$alumno->id}}">
-              <td colspan="4">
-                Hola
-              {{-- @foreach ($alumno->curso as $curso)
-                {{$curso->nombre}} -
-              @endforeach --}}
+              <td colspan="4">  
+                @foreach ($alumno->insc as $insc)
+                  {{$insc->curso->nombre}} -
+                @endforeach
               </td>
             </tr>
             @endforeach

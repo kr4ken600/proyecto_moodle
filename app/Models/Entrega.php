@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Entrega extends Model
 {
     use HasFactory;
+
+    public function practica()
+    {
+        return $this->belongsTo(Practica::class, 'id_practica');
+    }
 }

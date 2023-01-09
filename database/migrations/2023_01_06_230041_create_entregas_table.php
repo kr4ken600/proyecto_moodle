@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('entregas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('id_alumno')->unsigned();
             $table->integer('id_practica')->unsigned();
             $table->string('documento');

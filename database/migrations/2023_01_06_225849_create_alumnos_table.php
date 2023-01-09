@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('alumnos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('correo')->unique();
+            $table->string('email')->unique();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('passwd');
+            $table->string('password');
             $table->integer('id_role')->unsigned();
             $table->timestamps();
             
