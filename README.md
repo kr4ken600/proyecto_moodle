@@ -21,7 +21,12 @@ git clone git https://github.com/kr4ken600/proyecto_moodle.git cursos
 ```
 cd cursos && code .
 ```
-4. De nuevo en la terminal, creamos la base de datos de la siguiente forma:
+4. Procedes a instalar las dependencias
+```
+composer install
+npm install
+```
+5. De nuevo en la terminal, creamos la base de datos de la siguiente forma:
 ```
 php artisan migrate --seed
 yes
@@ -30,7 +35,7 @@ yes
 ```
 php artisan migrate:refresh --seed
 ```
-5. Por ultimo en el navegador de tu confianza escribes **cursos.test**
+6. Por ultimo en el navegador de tu confianza escribes **cursos.test**
 ***
 ## Para tener el VSC como el mio 🤙 (opcional)
 Busca e instala las siguientes extenciones:
