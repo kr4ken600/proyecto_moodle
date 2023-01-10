@@ -36,6 +36,14 @@ yes
 php artisan migrate:refresh --seed
 ```
 6. Por ultimo en el navegador de tu confianza escribes **cursos.test**
+
+>Nota: Ya hay usuarios por defecto
+
+|Tipo Usuario|correo|contraseña|
+|------------|------|----------|
+|Docente|josue@gmail.com|password|
+|Alumno|yon@gmail.com|password|
+
 ***
 ## Para tener el VSC como el mio 🤙 (opcional)
 Busca e instala las siguientes extenciones:
