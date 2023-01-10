@@ -15,11 +15,11 @@ Primero que nada ya deberas tener instalado todos los programas antes mencionado
 ![Captura 1](/img/sc1.png)
 2. En la terminal escibiras el siguiente comando
 ```
-git clone url
+git clone git https://github.com/kr4ken600/proyecto_moodle.git cursos
 ```
 3. Cuando haya terminado la clonacion, entras a la carpeta e inicias vsc
 ```
-cd carpeta && code .
+cd cursos && code .
 ```
 4. De nuevo en la terminal, creamos la base de datos de la siguiente forma:
 ```
