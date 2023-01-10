@@ -9,6 +9,9 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+
+use App\Models\LogSesion;
+
 class LoginController extends Controller
 {
     public function loginDocente(Request $req)
@@ -46,6 +49,16 @@ class LoginController extends Controller
         $credentials = $req->only('email', 'password');
 
         if(Auth::attempt($credentials)){
+            $id_log = \Str::random(10);
+            
+            $log = new LogSesion;
+            $log->id = $id_log;
+            $log->id_alumno = Auth::user()->id;
+            $log->entrada = now();
+            $log->save();
+
+            \Session::put('log', $id_log);
+
             $req->session()->regenerate();
             return redirect()->route('alumnos.panel');
         } else {
@@ -57,6 +70,10 @@ class LoginController extends Controller
 
     public function logoutAlumno()
     {
+        $log = LogSesion::find(\Session::get('log'));
+        $log->salida = now();
+        $log->save();
+
         Auth::logout();
         return redirect()->route('home');
     }

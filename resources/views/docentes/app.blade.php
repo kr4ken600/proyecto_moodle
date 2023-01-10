@@ -22,15 +22,16 @@
         <div class="navbar-nav me-auto mb-2 mb-lg-0"></div>
         <div class="d-flex ">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <span class="nav-link text-light">Usuario</span>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{Auth::guard('admin')->user()->email}}
+              </a>
+              <ul class="dropdown-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('docentes.logout')}}">Cerrar Sesión</a>
+                </li>
+              </ul>
             </li>
-            <li class="nav-item">
-              <form action="{{route('docentes.logout')}}" method="post">
-                @csrf
-                <button class="nav-link text-light" type="submit">Cerrar Sesión</button>
-              </form>
-          </li>
           </ul>
         </div>
       </div>

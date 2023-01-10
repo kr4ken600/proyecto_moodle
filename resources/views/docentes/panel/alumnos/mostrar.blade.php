@@ -57,6 +57,7 @@
           <th>Nombre</th>
           <th>Correo Electronico</th>
           <th>Cursos Inscritos</th>
+          <th>Tiempo en la plataforma</th>
           <th>Eliminar</th>
         </tr>
       </thead>
@@ -71,6 +72,7 @@
                   {{count($alumno->insc)}}
                 </a>
               </td>
+              <td>{{$horas}}</td>
               <td>
                 <form action="{{route('docentes.panel.alumnos.eliminar', [$alumno->id])}}" method="post">
                   @method('DELETE')
@@ -80,7 +82,7 @@
               </td>
             </tr>
             <tr class="ghost-table" id="tr{{$alumno->id}}">
-              <td colspan="4">  
+              <td colspan="5">  
                 @foreach ($alumno->insc as $insc)
                   {{$insc->curso->nombre}} -
                 @endforeach

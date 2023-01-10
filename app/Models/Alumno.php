@@ -35,4 +35,9 @@ class Alumno extends Authenticatable
     {
         return $this->hasMany(Inscripcion::class, 'id_alumno');
     }
+
+    public function log()
+    {
+        return $this->hasMany(LogSesion::class, 'id_alumno');
+    }
 }

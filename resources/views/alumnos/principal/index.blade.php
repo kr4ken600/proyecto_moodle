@@ -21,6 +21,9 @@
               </div>
             </div>
           @endif
+          @if ((count($inscripciones)) == 0)
+            <p>Aun no tienes cursos.</p>
+          @endif
           @foreach ($inscripciones as $insc)
           <div class="col-sm-12 col-md-4 .col-lg-4 mb-3">
             <div class="card text-center" style="width: auto">
@@ -42,6 +45,10 @@
         <h2 class="border-buttom bdb-principal pb-3 mb-5">Cursos Disponibles</h2>
         <div class="row justify-content-around">
           
+          @if (count($cursos) == 0)
+            <p>Aun no hay cursos disponibles.</p>
+          @endif
+
           @foreach ($cursos as $curso)
             <div class="col-sm-12 col-md-4 .col-lg-4 mb-3">
               <div class="card text-center" style="width: auto">

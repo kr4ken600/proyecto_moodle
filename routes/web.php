@@ -20,27 +20,37 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-//Index
+//! Index
 Route::get('/', function () {
     return view('index');
 })->name('home')
   ->middleware('guest');
 
-//Login Alumno
+//> Login Alumno
 Route::get('/alumnos', function () {
     return view('alumnos.login');
-})->name('alumnos');
+})->name('alumnos')
+  ->middleware('guest');
 
-Route::post('/alumnos/login', [LoginController::class, 'loginAlumno'])->name('alumno.login');
-Route::post('/alumnos/panel/logout', [LoginController::class, 'logoutAlumno'])->name('alumno.logout');
+Route::post('/alumnos/login', [LoginController::class, 'loginAlumno'])
+    ->name('alumno.login')
+    ->middleware('guest');
+Route::get('/alumnos/panel/logout', [LoginController::class, 'logoutAlumno'])
+    ->name('alumno.logout')
+    ->middleware('auth.alumno');
 
-//Login Administrador
+//> Login Administrador
 Route::get('/docentes', function () {
     return view('docentes.login');
-})->name('docentes');
+})->name('docentes')
+  ->middleware('guest');
 
-Route::post('/docentes/login', [LoginController::class, 'loginDocente'])->name('docentes.login');
-Route::post('/docentes/panel/logout', [LoginController::class, 'logoutDocente'])->name('docentes.logout');
+Route::post('/docentes/login', [LoginController::class, 'loginDocente'])
+    ->name('docentes.login')
+    ->middleware('guest');
+Route::get('/docentes/panel/logout', [LoginController::class, 'logoutDocente'])
+    ->name('docentes.logout')
+    ->middleware('auth.docente');
 
 //! Panel Docentes
 //> Cursos
@@ -49,37 +59,50 @@ Route::get('/docentes/panel/cursos', [CursoController::class, 'index'])
     ->middleware('auth.docente');
 //> Controller Cursos
 Route::get('/docentes/panel/cursos/crear', [CursoController::class, 'indexCreate'])
-    ->name('docentes.panel.cursos');
+    ->name('docentes.panel.cursos')
+    ->middleware('auth.docente');
 Route::post('/docentes/panel/cursos/crear/curso', [CursoController::class, 'store'])
-    ->name('docentes.panel.cursos.crear');
+    ->name('docentes.panel.cursos.crear')
+    ->middleware('auth.docente');
 
 Route::get('/docentes/panel/cursos/editar/{id}', [CursoController::class, 'show'])
-    ->name('docentes.panel.cursos.editar');
+    ->name('docentes.panel.cursos.editar')
+    ->middleware('auth.docente');
 Route::patch('/docentes/panel/cursos/editar/curso/{id}', [CursoController::class, 'update'])
-    ->name('docentes.panel.cursos.editarc');
+    ->name('docentes.panel.cursos.editarc')
+    ->middleware('auth.docente');
 Route::delete('/docentes/panel/cursos/curso/{id}', [CursoController::class, 'destroy'])
-    ->name('docentes.panel.cursos.eliminar');
+    ->name('docentes.panel.cursos.eliminar')
+    ->middleware('auth.docente');
 //> Controller Practicas
 Route::post('/docentes/panel/cursos/editar/practica', [PracticaController::class, 'store'])
-    ->name('docentes.panel.practica.crear');
+    ->name('docentes.panel.practica.crear')
+    ->middleware('auth.docente');
 Route::delete('/docentes/panel/cursos/editar/practica/{id}', [PracticaController::class, 'destroy'])
-    ->name('docentes.panel.practica.eliminar');
+    ->name('docentes.panel.practica.eliminar')
+    ->middleware('auth.docente');
 
 //> Controller Docentes
 Route::get('/docentes/panel/docentes', [DocenteController::class, 'index'])
-    ->name('docentes.panel.docentes');
+    ->name('docentes.panel.docentes')
+    ->middleware('auth.docente');
 Route::post('/docentes/panel/docentes/crear', [DocenteController::class, 'store'])
-    ->name('docentes.panel.docentes.crear');
+    ->name('docentes.panel.docentes.crear')
+    ->middleware('auth.docente');
 Route::delete('/docentes/panel/docentes/docente/{id}', [DocenteController::class, 'destroy'])
-    ->name('docentes.panel.docentes.eliminar');
+    ->name('docentes.panel.docentes.eliminar')
+    ->middleware('auth.docente');
 
 //> Controller Alumnos
 Route::get('/docentes/panel/alumnos', [AlumnoController::class, 'index'])
-    ->name('docentes.panel.alumnos');
+    ->name('docentes.panel.alumnos')
+    ->middleware('auth.docente');
 Route::post('/docentes/panel/alumnos/crear', [AlumnoController::class, 'store'])
-    ->name('docentes.panel.alumnos.crear');
+    ->name('docentes.panel.alumnos.crear')
+    ->middleware('auth.docente');
 Route::delete('/docentes/panel/alumnos/alumno/{id}', [AlumnoController::class, 'destroy'])
-    ->name('docentes.panel.alumnos.eliminar');
+    ->name('docentes.panel.alumnos.eliminar')
+    ->middleware('auth.docente');
 
 //! Panel Alumnos
 //> Index

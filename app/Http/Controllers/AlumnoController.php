@@ -5,14 +5,37 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use App\Models\LogSesion;
+use DateTime;
 
 class AlumnoController extends Controller
 {
     public function index()
     {
         $alumnos = Alumno::all();
+        $horas = array();
 
-        return view('docentes.panel.alumnos.mostrar', ['alumnos' => $alumnos]);
+        foreach ($alumnos as $alumno) {
+            foreach ($alumno->log as $log) {
+
+                //? Calcular Horas
+
+                $entrada = $log->entrada;
+                $salida = $log->salida;
+                
+                $h_inicio = new \Carbon\Carbon($entrada);
+                $h_final = new \Carbon\Carbon($salida);
+                
+                
+                $totales = $h_inicio->diffInMinutes($h_final);
+                array_push($horas, $totales);
+            }
+        }
+
+        $horas = array_sum($horas);
+        $horas = ($horas > 60) ? intdiv($horas, 60) . " Horas" : $horas . " Minutos";
+
+        return view('docentes.panel.alumnos.mostrar', ['alumnos' => $alumnos, 'horas' => $horas]);
     }
 
     public function store(Request $req)
